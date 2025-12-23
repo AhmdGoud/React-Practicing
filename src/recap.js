@@ -2,7 +2,7 @@
 // 1- event when click render list (not done) we need hooks 
 // 2- prompt when input render on condition (done) it worked
 
-export default function Recap(){
+export default function Recap(props){
     const items = [
         'item one',
         'item two',
@@ -15,11 +15,24 @@ export default function Recap(){
             <div key={i}>{itm}</div>
         )
     })
+    
+    if (props.prop === undefined){ //When a prop isn't passed to a component at all, it defaults to undefined, not null:
+        return(
+            <div>no prop is there</div>
+        )
+    }
+    // or we can check by this
+    // Best practice: handle both cases if needed
+    if (props.prop == null) {  // Checks both undefined AND null
+    return <div>no prop is there</div>;
+    }
 
     // here react render the JSX which is item
     return(
         <div>
             {item}
+            {props.prop}
+            {props.children}
         </div>
     )
 }
