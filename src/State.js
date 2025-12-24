@@ -15,8 +15,10 @@ export default function State(){
     // this function will be called on some action
     const checkValue = function(){
         if (value === 'default value'){
+            console.log('rendered')
             setValue('btn clicked')
         }else{
+            console.log('rendered')
             setValue('default value')
         }
     }

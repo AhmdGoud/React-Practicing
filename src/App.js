@@ -3,12 +3,14 @@
 // import MyFirstFileComp from './MyFirstFileComp.js'
 
 import State from './State.js';
+import Input from './Input.js';
 
 function App() {
   return (
     <div className="App">
       <MyFirstComp />
       <State />
+      <Input a='aa' b='bb'/>
     </div>
   );
 }
