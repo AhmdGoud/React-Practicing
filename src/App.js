@@ -2,13 +2,14 @@
 // import './App.css';
 // import MyFirstFileComp from './MyFirstFileComp.js'
 
-import MyForm from './Form.js'
+// import MyForm from './Form.js'
+import FormRecap from './FormRecap.js';
 
 function App() {
   return (
     <div className="App">
       <MyFirstComp />
-      <MyForm />
+      <FormRecap />
     </div>
   );
 }
