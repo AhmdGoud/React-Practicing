@@ -2,13 +2,13 @@
 // import './App.css';
 // import MyFirstFileComp from './MyFirstFileComp.js'
 
-import Canvas from './ReactDocTasks/ObjectState/TheDragabbleBox.js';
+import ArrayState from './ReactDocTasks/ArrayState/ArrayState.js';
 
 function App() {
   return (
     <div className="App">
       <MyFirstComp />
-      <Canvas />
+      <ArrayState />
     </div>
   );
 }
