@@ -1,28 +1,26 @@
 // import logo from './logo.svg';
 // import './App.css';
-// import MyFirstFileComp from './MyFirstFileComp.js'
+import TheForm from '../src/LoanAppForm/TheForm'
 
-import ArrayState from './ReactDocTasks/ArrayState/ArrayState.js';
 
 function App() {
   return (
     <div className="App">
-      <MyFirstComp />
-      <ArrayState />
-    </div>
-  );
-}
-
-function MyFirstComp(){
-  return (
-    <div>
-      <h1 style={{color: 'green'}}>My First Component</h1>
-      <h3>Great Work ..</h3>
+      <TheForm />
     </div>
   );
 }
 
 export default App;
+
+// function MyFirstComp(){
+//   return (
+//     <div>
+//       <h1 style={{color: 'green'}}>My First Component</h1>
+//       <h3>Great Work ..</h3>
+//     </div>
+//   );
+// }
 
 // {/* <Recap prop='property'/>
 //       <Recap>
