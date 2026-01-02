@@ -1,6 +1,9 @@
 import { useState, useCallback } from "react";
 import { useRef, useEffect } from "react";
 
+import PopUp from "./PopUpTab";
+import { setShowPopUp } from "./PopUpTab";
+
 export default function TheForm(){
     // styling
     const formStyle = {
@@ -51,15 +54,8 @@ export default function TheForm(){
     // the key as a string , and an object holding the values
 
     const submitBtnRef = useRef(null)
+    const fieldChecknRef = useRef(null)
 
-    // function changeBtnColor(){
-    //     for (let entry of entries){
-    //         if (!entry[1].value){
-    //             return;
-    //         }
-    //     }
-    //     submitBtnRef.current.style.backgroundColor = 'skyblue'
-    // } but using callBack
     const changeBtnColor = useCallback(() =>{
         for (let entry of entries){
             if (!entry[1].value){
@@ -72,6 +68,15 @@ export default function TheForm(){
     useEffect(() =>{
         changeBtnColor();
     }, [formInputs, changeBtnColor])
+
+    // test age and number is numbers not letters
+    function testNum(e){
+        if (/[a-zA-Z]/.test(e.target.value)){
+            fieldChecknRef.current.style.display = 'block'
+        }else{
+            fieldChecknRef.current.style.display = 'none'
+        }
+    }
 
     return(
         <form style={formStyle}>
@@ -86,12 +91,14 @@ export default function TheForm(){
                 <label>number</label>
                 <input type="text" value={formInputs.number.value} onChange={(e) =>{
                     updateValues(e, "number")
+                    testNum(e)
                 }}/>
             </div>
             <div style={divStyle}>
                 <label>age</label>
                 <input type="text" value={formInputs.age.value} onChange={(e) =>{
                     updateValues(e, "age")
+                    testNum(e)
                 }}/>
             </div>
 
@@ -110,16 +117,37 @@ export default function TheForm(){
             </select><br></br> */}
 
             <button ref={submitBtnRef} onClick={(e) =>{
-                // entries return an array of key and value
-                Object.entries(formInputs).forEach(([key, values]) =>{ // bracket notation
-                    // as we destructure them for the entries
-                    if (!values.value){
+
+                const entries = Object.values(formInputs);
+                for (let val of entries){
+                    if (!val.value){
                         e.preventDefault()
+                        return;
                     }
-                    // return keyword just stops the single excuation in the foreach
-                })
+                    setShowPopUp(true)
+                }
+
+                if (formInputs.age.value <= 18 || formInputs.number.value.length !== 12){
+                    e.preventDefault()
+                }
+
             }}>submit form</button>
 
+            <div ref={fieldChecknRef} style={{
+                color: 'red',
+                backgroundColor: 'white',
+                width: '100%',
+                textAlign: 'center',
+                display: 'none'
+            }}>field must be in numbers</div>
+
+            <PopUp />
         </form>
     )
 }
+
+// some notes
+// Object.entries(formInputs).forEach(([key, values]) =>{ // bracket notation
+    // as we destructure them for the entries
+// Object.entries return an array of key and value
+// return; keyword just stops the single excuation in the foreach
