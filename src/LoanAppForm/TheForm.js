@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { useRef, useEffect } from "react";
 
 import PopUp from "./PopUpTab";
-import { setShowPopUp } from "./PopUpTab";
+import { showPopUpFucnk } from "./PopUpTab";
 
 export default function TheForm(){
     // styling
@@ -41,6 +41,9 @@ export default function TheForm(){
 
     // useState
     const [formInputs, setFormInputs] = useState(initialInputs)
+    // use reference
+    const submitBtnRef = useRef(null)
+    const fieldChecknRef = useRef(null)
 
     function updateValues(event, element){
         const objToUpdate = {...formInputs}
@@ -53,9 +56,8 @@ export default function TheForm(){
     const entries = Object.entries(formInputs) // array of arrays , each one have 2 indexs
     // the key as a string , and an object holding the values
 
-    const submitBtnRef = useRef(null)
-    const fieldChecknRef = useRef(null)
 
+    // use callback
     const changeBtnColor = useCallback(() =>{
         for (let entry of entries){
             if (!entry[1].value){
@@ -109,13 +111,6 @@ export default function TheForm(){
                 setFormInputs(objToUpdate)
             }}/><br></br>
 
-            {/* <select>
-                <option>select salary range</option>
-                <option>from 1000 to 3000</option>
-                <option>from 3000 to 5000</option>
-                <option>from 5000 to 10000</option>
-            </select><br></br> */}
-
             <button ref={submitBtnRef} onClick={(e) =>{
 
                 const entries = Object.values(formInputs);
@@ -124,7 +119,7 @@ export default function TheForm(){
                         e.preventDefault()
                         return;
                     }
-                    setShowPopUp(true)
+                    showPopUpFucnk()
                 }
 
                 if (formInputs.age.value <= 18 || formInputs.number.value.length !== 12){

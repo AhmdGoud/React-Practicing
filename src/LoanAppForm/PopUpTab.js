@@ -1,5 +1,6 @@
 import { useState } from "react"
 export let showPopUp , setShowPopUp
+export let showPopUpFucnk
 
 export default function PopUp(){
     
@@ -8,6 +9,11 @@ export default function PopUp(){
         color: 'green',
         backgroundColor: 'white',
         display: showPopUp ? 'block' : 'none'
+    }
+
+    // it's better that the component that imported the state it's the one that updates it, to avoid side affects
+    showPopUpFucnk = function(){
+        setShowPopUp(true)
     }
 
     return(
