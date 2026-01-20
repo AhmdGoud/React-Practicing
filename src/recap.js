@@ -9,6 +9,7 @@ export default function Recap(props){
         'item three'
     ]
 
+
     let item ; // item will equal an array of objects cause map returns html elements
     item = items.map(function(itm, i){
         return(
@@ -18,13 +19,17 @@ export default function Recap(props){
     
     if (props.prop === undefined){ //When a prop isn't passed to a component at all, it defaults to undefined, not null:
         return(
-            <div>no prop is there</div>
+            <div>
+                no prop is there from undifined
+        </div>
         )
     }
     // or we can check by this
     // Best practice: handle both cases if needed
     if (props.prop == null) {  // Checks both undefined AND null
-    return <div>no prop is there</div>;
+        return <div>
+            no prop is there from null
+        </div>;
     }
 
     // here react render the JSX which is item
