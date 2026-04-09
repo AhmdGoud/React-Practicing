@@ -4,7 +4,9 @@ import "./App.css";
 
 import { Provider } from "react-redux";
 import store from "./Redux/store";
-import Counter from "./Redux/counter";
+// import Counter from "./Redux/counter";
+
+import Main from "./reRun_reEvoluation/main";
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
         {/* <Counter />
       <Print /> */}
 
-        <Counter />
+        {/* <Counter /> */}
+        <Main />
       </div>
     </Provider>
   );

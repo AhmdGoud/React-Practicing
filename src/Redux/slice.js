@@ -10,6 +10,7 @@ const counterSlice = createSlice({
     decrement: (state) => {
       state.value -= 1;
     },
+    // Redux Toolkit automatically generates increment(), decrement() which are actions
   },
 });
 

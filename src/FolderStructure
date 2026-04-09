@@ -1,0 +1,26 @@
+/**
+src
+├── components
+│    ├── common or shared => what is shared in components
+│    ├── feedback
+│    ├── forms
+│    ├── layout => like navbar or header
+│
+├── pages
+│
+├── assets
+│
+├── util => pure js functions that will be used more than once
+│
+├── store
+│
+├── services => global config or api handler
+│
+├── hooks
+│
+├── templates => main layout
+│
+├── styles   
+│
+└── routes
+*/
